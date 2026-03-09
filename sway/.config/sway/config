@@ -1,0 +1,159 @@
+# sway config — ported from i3 config
+
+set $alt Mod1
+set $mod Mod4
+
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod normal
+
+# Terminal
+bindsym $mod+Return exec foot
+
+# Kill focused window
+bindsym $mod+shift+q kill
+
+# Launcher (rofi-wayland)
+bindsym $mod+d exec rofi -show run
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split orientation
+bindsym $mod+h splith
+bindsym $mod+v splitv
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Focus tiling / floating
+bindsym $mod+space focus mode_toggle
+
+# Focus parent
+bindsym $mod+a focus parent
+
+# Workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Reload / exit
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?' -b 'Yes, exit' 'swaymsg exit'
+
+# Resize mode
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bar {
+        swaybar_command waybar
+}
+
+# Keyboard layout: US/Arabic with Alt+Shift toggle
+input type:keyboard {
+        xkb_layout us,ar
+        xkb_options grp:alt_shift_toggle
+}
+
+# Volume keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# File manager
+bindsym $alt+f exec pcmanfm
+
+# Rofi launchers (rofi-wayland)
+bindsym $alt+r exec rofi -show run
+bindsym $alt+w exec rofi -show window
+
+bindsym $alt+m exec rofi -modi "MathCalc:mathexpr" -show MathCalc
+bindsym $alt+s exec rofi -modi "SearchDuck:ducksearch" -show SearchDuck
+bindsym $alt+k exec rofi -modi "ProcKiller:processkill" -show ProcKiller
+bindsym $alt+v exec youtubevid
+
+bindsym $alt+a exec "rofi -show run -sidebar-mode -modi 'window,run,SearchDuck:ducksearch,MathCalc:mathexpr,ProcKiller:processkill'"
+
+# Lock screen (swaylock replaces i3lock)
+bindsym $alt+l exec swaylock -c 000000
+
+focus_follows_mouse no
+
+# Environment: fix slow app launches and portal hangs
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/libexec/xdg-desktop-portal-wlr
+exec /usr/libexec/xdg-desktop-portal-gtk
+exec /usr/libexec/xdg-desktop-portal -r
+
+# Keyring / secrets (needed for Vivaldi, Wi-Fi passwords, etc.)
+exec eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+exec export SSH_AUTH_SOCK
+
+# Notification daemon
+exec mako
+
+# Polkit agent (for GUI password prompts)
+exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+
+# Autostart
+exec_always nm-applet --indicator

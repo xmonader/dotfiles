@@ -1,0 +1,14 @@
+{
+    "KPlugin": {
+        "Id": "kdeautotile",
+        "Name": "KDE Auto Tile",
+        "Description": "i3-like master/stack auto-tiling for KDE Plasma 6",
+        "Version": "1.0.0",
+        "License": "MIT",
+        "Website": "https://github.com/xmonader/kdeautotile"
+    },
+    "KPackageStructure": "KWin/Script",
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js",
+    "X-KWin-Exclude-Listing": "false"
+}

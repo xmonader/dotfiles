@@ -1,128 +1,59 @@
 [global_config]
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  suppress_multiple_term_dialog = True
-  title_hide_sizetext = True
+  ask_before_closing = never
 [keybindings]
-  page_down = <Shift>Page_Down
-  page_down_half = <Shift>Page_Up
   split_horiz = <Primary><Shift>o
   split_vert = <Primary><Shift>e
+  page_down = <Shift>Page_Down
+  page_down_half = <Shift>Page_Up
   toggle_zoom = <Primary><Shift>x
-[layouts]
-  [[default]]
-    [[[child0]]]
-      fullscreen = False
-      last_active_term = 2d1dbca0-eae7-4cb3-a553-60756b91ebec
-      last_active_window = True
-      maximised = False
-      order = 0
-      parent = ""
-      position = 0:18
-      size = 796, 861
-      title = xmonader
-      type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 428
-      ratio = 0.5
-      type = VPaned
-    [[[child2]]]
-      order = 0
-      parent = child1
-      position = 395
-      ratio = 0.499371859296
-      type = HPaned
-    [[[child5]]]
-      order = 1
-      parent = child1
-      position = 395
-      ratio = 0.499371859296
-      type = HPaned
-    [[[terminal3]]]
-      order = 0
-      parent = child2
-      profile = default
-      type = Terminal
-      uuid = d7272729-c423-428c-87d9-8abb019bdd9f
-    [[[terminal4]]]
-      order = 1
-      parent = child2
-      profile = default
-      type = Terminal
-      uuid = 2d1dbca0-eae7-4cb3-a553-60756b91ebec
-    [[[terminal6]]]
-      order = 0
-      parent = child5
-      profile = default
-      type = Terminal
-      uuid = 543221ed-ed3d-4175-9e7c-2c3caad5edb2
-    [[[terminal7]]]
-      order = 1
-      parent = child5
-      profile = default
-      type = Terminal
-      uuid = 9b6295b3-91de-4e79-b194-68607498512b
-  [[New Layout]]
-    [[[child0]]]
-      fullscreen = False
-      last_active_term = 2d1dbca0-eae7-4cb3-a553-60756b91ebec
-      last_active_window = True
-      maximised = False
-      order = 0
-      parent = ""
-      position = 0:18
-      size = 796, 861
-      title = abdulrahman@abdulrahman: ~
-      type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 428
-      ratio = 0.5
-      type = VPaned
-    [[[child2]]]
-      order = 0
-      parent = child1
-      position = 395
-      ratio = 0.499371859296
-      type = HPaned
-    [[[child5]]]
-      order = 1
-      parent = child1
-      position = 395
-      ratio = 0.499371859296
-      type = HPaned
-    [[[terminal3]]]
-      order = 0
-      parent = child2
-      profile = default
-      type = Terminal
-      uuid = d7272729-c423-428c-87d9-8abb019bdd9f
-    [[[terminal4]]]
-      order = 1
-      parent = child2
-      profile = default
-      type = Terminal
-      uuid = 2d1dbca0-eae7-4cb3-a553-60756b91ebec
-    [[[terminal6]]]
-      order = 0
-      parent = child5
-      profile = default
-      type = Terminal
-      uuid = 543221ed-ed3d-4175-9e7c-2c3caad5edb2
-    [[[terminal7]]]
-      order = 1
-      parent = child5
-      profile = default
-      type = Terminal
-      uuid = 9b6295b3-91de-4e79-b194-68607498512b
-[plugins]
 [profiles]
   [[default]]
-    copy_on_selection = True
-    cursor_color = "#ffffff"
     font = Monospace 10
     foreground_color = "#ffffff"
     scrollback_infinite = True
     use_system_font = False
+    copy_on_selection = True
+[layouts]
+  [[default]]
+    [[[child0]]]
+      maximised = True
+      order = 0
+      parent = ""
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 500
+      type = HPaned
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 500
+      type = VPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 500
+      type = VPaned
+    [[[terminal4]]]
+      order = 0
+      parent = child2
+      profile = default
+      type = Terminal
+    [[[terminal5]]]
+      order = 1
+      parent = child2
+      profile = default
+      type = Terminal
+    [[[terminal6]]]
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+    [[[terminal7]]]
+      order = 1
+      parent = child3
+      profile = default
+      type = Terminal
+[plugins]
